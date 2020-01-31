@@ -1,0 +1,2 @@
+# memCards
+Fckin' localStorage )
