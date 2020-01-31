@@ -1,10 +1,10 @@
 // Переменные для input
-let inputName = document.querySelector('.add-link');
-let inputDescription = document.querySelector('.add-description');
+let inputName = document.querySelector(".add-link");
+let inputDescription = document.querySelector(".add-description");
 
 let counter = 0;
 // let char;
-let counterDiv = document.querySelector('.counter');
+let counterDiv = document.querySelector(".counter");
 counterDiv.innerText = counter;
 
 let itemList;
@@ -13,22 +13,20 @@ let closeCross;
 let cardTitle;
 let cardDescription;
 let cardTextDiv;
+let savedCards;
 // let cards;
 
 // let cardButtonDiv;
 
-
-
-
 // Функция для удаления карточек по одиночке
 function deleteCard() {
-  cards = document.querySelectorAll('.card');
+  cards = document.querySelectorAll(".card");
   for (let i = 0; i < cards.length; i++) {
     closeCross.onclick = () => {
       counter--;
       counterDiv.innerText = counter;
       cards[i].remove();
-    }
+    };
   }
 }
 
@@ -51,74 +49,77 @@ function deleteCard() {
 //   }
 // }
 
+function getSavedCards() {
+  return JSON.parse(localStorage.getItem("savedCards") || "[]");
+}
+
+function saveCards(cardList) {
+  localStorage.setItem("savedCards", JSON.stringify(cardList));
+}
+
 // Функция для добавления карточки
 function addCard() {
   // Переменный для value
   let name = inputName.value;
   let description = inputDescription.value;
 
-  if (name == '' || description == '') {
-    return false;
-  } else {
-    console.log('test');
-    // console.log(name);
-    // console.log(description);
+  //just for better reading, no need to use if esle, we just return if name or description are empty.
+  if (name == "" || description == "") return;
 
-    // if (name && description) {
-    //   localStorage.setItem(name, description);
-    // }
+  // first of all we need to get all the stored cards before, if there are no cards just return empty list
+  savedCards = getSavedCards();
 
-    // for (let i = 0; i < localStorage.length; i++) {
-    //   const name = localStorage.key(i);
-    //   const description = localStorage.getItem(name);
-    // }
+  //creating new card object
+  let card = {
+    name,
+    description
+  };
+  // pushing created card object to savedCards list
+  savedCards.push(card);
 
-    // Счетчик
-    counter++;
-    counterDiv.innerText = counter;
-    // Захватывается главный div
-    itemList = document.querySelector('.item-list');
-    // Добавляется сама карточка
-    card = document.createElement('div');
-    card.classList.add('card');
-    itemList.appendChild(card);
-    // Название карточки
-    cardTitle = document.createElement('h3');
-    cardTitle.classList.add('card-title');
-    // Описание карточки
-    cardDescription = document.createElement('p');
-    cardDescription.classList.add('card-description');
-    // Вывод введенной информации в название и описание
-    cardTitle.innerText = name;
-    cardDescription.innerText = description;
-    inputName.value = '';
-    inputDescription.value = '';
-    // Крестик для закрытия карточки
-    closeCross = document.createElement('span');
-    closeCross.classList.add('close');
+  //saving updated cards list to localStorage
+  saveCards(savedCards);
 
-    cardTextDiv = document.createElement('div');
-    cardTextDiv.classList.add('card-text');
-    // Элементы присваиваются как дочерние
-    card.appendChild(closeCross);
-    card.appendChild(cardTextDiv);
-    cardTextDiv.appendChild(cardTitle);
-    cardTextDiv.appendChild(cardDescription);
+  // Счетчик
+  counter++;
+  counterDiv.innerText = counter;
+  // Захватывается главный div
+  itemList = document.querySelector(".item-list");
+  // Добавляется сама карточка
+  card = document.createElement("div");
+  card.classList.add("card");
+  itemList.appendChild(card);
+  // Название карточки
+  cardTitle = document.createElement("h3");
+  cardTitle.classList.add("card-title");
+  // Описание карточки
+  cardDescription = document.createElement("p");
+  cardDescription.classList.add("card-description");
+  // Вывод введенной информации в название и описание
+  cardTitle.innerText = name;
+  cardDescription.innerText = description;
+  inputName.value = "";
+  inputDescription.value = "";
+  // Крестик для закрытия карточки
+  closeCross = document.createElement("span");
+  closeCross.classList.add("close");
 
-    // cardButtonDiv = document.createElement('div');
-    // cardButtonDiv.classList.add('card-buttons');
-    // card.appendChild(cardButtonDiv);
+  cardTextDiv = document.createElement("div");
+  cardTextDiv.classList.add("card-text");
+  // Элементы присваиваются как дочерние
+  card.appendChild(closeCross);
+  card.appendChild(cardTextDiv);
+  cardTextDiv.appendChild(cardTitle);
+  cardTextDiv.appendChild(cardDescription);
 
+  // cardButtonDiv = document.createElement('div');
+  // cardButtonDiv.classList.add('card-buttons');
+  // card.appendChild(cardButtonDiv);
 
-    // Запуск функции для удаления карточки
-    deleteCard();
-  }
+  // Запуск функции для удаления карточки
+  deleteCard();
 }
-document.querySelector('#add-button').onclick = addCard;
-
-
-
-
+document.querySelector("#add-button").onclick = addCard;
 
 // Функция для добавления карточки
 // document.addEventListener('keydown', function (event) {
