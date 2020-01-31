@@ -60,7 +60,7 @@ function addCard() {
   if (name == '' || description == '') {
     return false;
   } else {
-
+    console.log('test');
     // console.log(name);
     // console.log(description);
 
