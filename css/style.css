@@ -1,0 +1,264 @@
+/* main preferences */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Jura;
+  background-color: #000413;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  /* border: 5px solid #012636; */
+}
+
+/* add-menu */
+#header {
+  margin-bottom: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid white; */
+  text-align: center;
+  color: white;
+  background-color: black;
+  border: 5px solid #055577;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#logo {
+  width: 32px;
+  margin-right: 10px;
+}
+
+.menu-counter {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  border: 5px solid #055577;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.counter-span {
+  letter-spacing: 5px;
+  color: #528196;
+}
+
+.counter {
+  color: white;
+}
+
+/* #menu-items {
+  border: 1px solid white;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  background-color: black;
+} */
+
+#menu-add {
+  margin-bottom: 1px;
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 5px solid #055577;
+  color: white;
+  /* border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; */
+  /* border-bottom: 1px solid black; */
+}
+
+#add-button {
+  padding: 7px 25px;
+  /* margin-right: 5px; */
+  color: black;
+  border: 1px solid black;
+  /* border-radius: 50px; */
+  border-bottom-right-radius: 20px;
+  background-color: #055577;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#delete-button {
+  padding: 7px 25px;
+  /* margin-right: 5px; */
+  color: black;
+  border: 1px solid black;
+  /* border-radius: 50px; */
+  background-color: #055577;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#add-button:hover {
+  border: 1px solid black;
+  color: white;
+}
+
+#delete-button:hover {
+  border: 1px solid black;
+  color: white;
+}
+
+.add-description {
+  resize: none;
+  margin-top: 5px;
+  padding-left: 10px;
+  font-family: Jura;
+  margin-left: 5px;
+  outline: none;
+  font-size: 20px;
+  width: 680px;
+  border: 2px solid black;
+  background-color: #021C33;
+  color: white;
+  /* border-radius: 6px; */
+}
+
+.add-link {
+  padding-left: 10px;
+  font-family: Jura;
+  margin-left: 5px;
+  outline: none;
+  font-size: 20px;
+  width: 680px;
+  border: 2px solid black;
+  background-color: #022e3b;
+  color: white;
+  /* border-radius: 6px; */
+}
+
+/* items */
+
+.item-list {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+.card {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  position: relative;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 400px;
+  height: 100%;
+  border: 5px solid #055577;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: #000413;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 20px 1px #528196;
+}
+
+/* .marker {
+  margin: 10px 10px;
+  position: absolute;
+  left: 5px;
+  width: 32px;
+}
+
+.marker:hover {
+  width: 35px;
+  cursor: pointer;
+} */
+
+/* cards */
+
+.card-title {
+  word-wrap: break-word;
+  padding: 15px 0;
+  max-width: 400px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0 auto;
+  color: white;
+  background-color: #035577;
+}
+
+.card-title-char {
+  color: red;
+}
+
+.card-description {
+  padding: 15px 0;
+  text-align: justify;
+  max-width: 350px;
+  margin: 0 auto;
+  word-wrap: break-word;
+  color: white;
+}
+
+
+/* span {
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+span.fade {
+  opacity: 1;
+} */
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  width: 25px;
+  height: 25px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: white;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
