@@ -1,9 +1,9 @@
-// Переменные для input
+// Variables for input
 let inputName = document.querySelector(".add-link");
 let inputDescription = document.querySelector(".add-description");
 
 let counter = 0;
-// let char;
+
 let counterDiv = document.querySelector(".counter");
 counterDiv.innerText = counter;
 
@@ -14,11 +14,19 @@ let cardTitle;
 let cardDescription;
 let cardTextDiv;
 let savedCards;
-// let cards;
 
-// let cardButtonDiv;
 
-// Функция для удаления карточек по одиночке
+// Pocket function
+function makePocket() {
+  let descriptions = document.querySelectorAll('.card-description');
+  for (let i = 0; i < descriptions.length; i++) {
+    cardTitle.onclick = () => {
+      descriptions[i] = cardDescription.style.display = 'none';
+    };
+  }
+}
+
+// Function for remove cards
 function deleteCard() {
   cards = document.querySelectorAll(".card");
   for (let i = 0; i < cards.length; i++) {
@@ -30,25 +38,6 @@ function deleteCard() {
   }
 }
 
-// Функция по определению цифр в строке
-// function getTheNumber() {
-//   for (let i = 0; i < inputName.value.length; i++) {
-//     if (inputName.value[i] == 1 ||
-//       inputName.value[i] == 2 ||
-//       inputName.value[i] == 3 ||
-//       inputName.value[i] == 4 ||
-//       inputName.value[i] == 5 ||
-//       inputName.value[i] == 6 ||
-//       inputName.value[i] == 7 ||
-//       inputName.value[i] == 8 ||
-//       inputName.value[i] == 9 ||
-//       inputName.value[i] == 0) {
-//       char = inputName.value[i];
-//       console.log(char);
-//     }
-//   }
-// }
-
 function getSavedCards() {
   return JSON.parse(localStorage.getItem("savedCards") || "[]");
 }
@@ -57,9 +46,9 @@ function saveCards(cardList) {
   localStorage.setItem("savedCards", JSON.stringify(cardList));
 }
 
-// Функция для добавления карточки
+// Add cards function
 function addCard() {
-  // Переменный для value
+  // Variables for value
   let name = inputName.value;
   let description = inputDescription.value;
 
@@ -80,7 +69,7 @@ function addCard() {
   //saving updated cards list to localStorage
   saveCards(savedCards);
 
-  // Счетчик
+  // Counter
   counter++;
   counterDiv.innerText = counter;
   // Захватывается главный div
@@ -112,18 +101,7 @@ function addCard() {
   cardTextDiv.appendChild(cardTitle);
   cardTextDiv.appendChild(cardDescription);
 
-  // cardButtonDiv = document.createElement('div');
-  // cardButtonDiv.classList.add('card-buttons');
-  // card.appendChild(cardButtonDiv);
-
-  // Запуск функции для удаления карточки
+  makePocket();
   deleteCard();
 }
 document.querySelector("#add-button").onclick = addCard;
-
-// Функция для добавления карточки
-// document.addEventListener('keydown', function (event) {
-//   if (event.code == 13) {
-//     alert('Отменить!');
-//   }
-// });
